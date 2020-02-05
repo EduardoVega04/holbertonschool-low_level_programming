@@ -1,0 +1,1 @@
+<strong>Scripts with C code using betty linter<strong>
