@@ -6,10 +6,17 @@
  */
 int main(void)
 {
-char z;
-for(z = 'z'; z >= 'a'; z--)
+char a = 0;
+char a_to_f = 'a';
+while (a <= 9)
 {
-putchar(z);
+putchar(a + '0');
+a++;
+}
+while (a_to_f <= 'f')
+{
+putchar(a_to_f);
+a_to_f++;
 }
 putchar('\n');
 return (0);
