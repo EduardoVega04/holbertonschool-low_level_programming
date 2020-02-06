@@ -1,1 +1,1 @@
-<strong>C code with conditionals if, else, while....<strong>
+<strong>C code with conditionals if, else, while...<strong>
