@@ -6,19 +6,12 @@
  */
 int main(void)
 {
-char a = 'a';
-while (a <= 'z')
+int n = 0;
+while (n <= 9)
 {
-if(a == 'q' || a == 'e')
-{
-a++;
+printf("%d", n);
+n++;
 }
-else
-{
-putchar(a);
-a++;
-}
-}
-putchar('\n');
+printf("\n");
 return (0);
 }
