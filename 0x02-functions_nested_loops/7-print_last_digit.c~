@@ -1,0 +1,19 @@
+#include "holberton.h"
+/**
+ * print_last_digit - Prints the last digit of a number
+ * @n: The character to print
+ *
+ * Return: The value of the last digit
+ *
+ */
+int print_last_digit(int n)
+{
+int negtive, positive;
+negative = n % 10;
+if (negative <  0)
+negative = -negative;
+positive = '0' + negative;
+_putchar(positive);
+return (negative);
+}
+
