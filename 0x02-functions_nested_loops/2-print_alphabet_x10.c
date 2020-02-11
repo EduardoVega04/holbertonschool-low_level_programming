@@ -15,9 +15,9 @@ while (veces < 10)
 veces++;
 for (alphabet = 'a'; alphabet <= 'z'; alphabet++)
 {
-putchar (alphabet);
+_putchar (alphabet);
 }
-putchar ('\n');
+_putchar ('\n');
 }
 return (0);
 }
