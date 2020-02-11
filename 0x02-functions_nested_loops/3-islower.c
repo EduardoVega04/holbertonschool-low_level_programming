@@ -1,13 +1,13 @@
 #include "holberton.h"
 /**
- * _isalpha(int c) - entry point
- *
+ * _islower - entry point
+ * @c: integer to test
  * Checks if is lowercase or not
  * Return: 1 if c is lowercase, otherwise return 0
  *
  */
 
-int _isalpha(int c)
+int _islower(int c)
 {
 if (c >= 'a' && c <= 'z')
 {
