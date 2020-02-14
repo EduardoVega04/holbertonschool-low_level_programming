@@ -18,7 +18,7 @@ while (n % i == 0)
 n = n / i;
 }
 }
-printf("%li", n);
+printf("%li\n", n);
 
 return (0);
 }
