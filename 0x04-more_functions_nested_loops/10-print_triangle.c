@@ -1,4 +1,4 @@
-#nclude "holberton.h"
+#include "holberton.h"
 /**
  * print_triangle - Prints a triangle of n size
  * @size: The integer to test
