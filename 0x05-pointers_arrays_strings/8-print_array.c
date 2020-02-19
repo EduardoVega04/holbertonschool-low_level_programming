@@ -1,4 +1,5 @@
 #include "holberton.h"
+#include <stdio.h>
 /**
  * print_array - Prints n elements of an array
  * @a: the integer to test
