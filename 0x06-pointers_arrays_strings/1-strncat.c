@@ -1,6 +1,6 @@
 #include "holberton.h"
 /**
- * _strncat - Concatenates two strings
+ * _strncat - Concatenates two strings with a condition
  * @dest: The character to print
  * @src: The character to print
  * @n: The n number of bytes
@@ -9,17 +9,17 @@
  */
 char *_strncat(char *dest, char *src, int n)
 {
-int i;
-int j;
-for (i = 0; dest[i] != '\0'; i++)
+int a = 0;
+int b = 0;
+while (dest[a] != '\0')
 {
+a++;
 }
-j = 0;
-while (j < n && src[j] != '\0')
+while (src[b] != '\0' && b < n)
 {
-dest[i] = src[j];
-i++;
-j++;
+dest[a] = src[b];
+a++;
+b++;
 }
 return (dest);
 }
