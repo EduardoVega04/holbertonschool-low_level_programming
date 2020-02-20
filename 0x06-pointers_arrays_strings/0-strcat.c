@@ -4,20 +4,23 @@
  * @dest: The character to test
  * @src: The character to test
  *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
+ * Return: Concatenated strings.
+ *
  */
 char *_strcat(char *dest, char *src)
 {
-int i;
-int j;
-for (i = 0; dest[i] != '\0'; i++)
+int a = 0;
+int b = 0;
+while (dest[a] != '\0')
 {
+a++;
 }
-for (j = 0; src[j] != '\0'; j++)
+while (src[b] != '\0')
 {
-dest[i + j] = src[j];
+dest[a] = src[b];
+a++;
+b++;
 }
-dest[i + j] = '\0';
+dest[a] = '\0';
 return (dest);
 }
