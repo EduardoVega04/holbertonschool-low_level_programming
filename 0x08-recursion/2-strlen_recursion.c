@@ -11,4 +11,6 @@ if (*s)
 s++;
 return (1 + _strlen_recursion(s));
 }
+else
+return (0);
 }
