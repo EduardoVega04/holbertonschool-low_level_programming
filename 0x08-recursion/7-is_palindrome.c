@@ -8,12 +8,12 @@
 
 int string_length(char *s)
 {
-if (!*s)
+if (*s == '\0')
 {
 return (0);
 }
 s++;
-return (string_length(s) + 1);
+return (1 + string_length(s));
 }
 
 /**
