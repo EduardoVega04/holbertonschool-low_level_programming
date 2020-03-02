@@ -1,4 +1,5 @@
 #include "holberton.h"
+#include <unistd.h>
 /**
  * _memset - Sets the first n bytes of *s with the content of b
  * @s: The string to manipulate
