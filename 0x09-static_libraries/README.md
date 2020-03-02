@@ -1,1 +1,1 @@
-<strong>Static libraries project<strong>
+<strong>Static libraries project.<strong>
