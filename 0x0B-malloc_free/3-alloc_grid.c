@@ -8,41 +8,37 @@
  */
 int **alloc_grid(int width, int height)
 {
-	int a;
-	int i;
-	int j;
-	int **ptr;
+	int **m;
+	int i, x, y;
 
 	if (width <= 0 || height <= 0)
 		return (NULL);
-
-	ptr = (int *)malloc(sizeof(int) * height);
-
-	if (ptr == NULL)
+	/* Assign memory at the rows */
+	m = (int **) malloc(height * sizeof(int *));
+	if (m == NULL)
 	{
-		free(ptr);
+		free(m);
 		return (NULL);
 	}
-
-	for (a = 0; a < height; a++)
-	{
-		ptr[a] = (int *)malloc(sizeof(int) * width);
-		if (ptr[a] == NULL)
-		{
-			for (; a >= 0; a--)
-				free(ptr[a]);
-			free(ptr);
-			return (NULL);
-
-		}
-	}
-
+	/* Assign memeory to each element*/
 	for (i = 0; i < height; i++)
 	{
-		for (j = 0; j < width; j++)
+		m[i] = (int *) malloc(width * sizeof(int));
+		if (m[i] == NULL)
 		{
-			ptr[i][j] = 0;
+			for (; i >= 0; i--)
+				free(m[i]);
+			free(m);
+			return (NULL);
 		}
 	}
-	return (ptr);
+	/* Initialize each element */
+	for (x = 0; x < height; x++)
+	{
+		for (y = 0; y < width; y++)
+		{
+			m[x][y] = 0;
+		}
+	}
+	return (m);
 }
