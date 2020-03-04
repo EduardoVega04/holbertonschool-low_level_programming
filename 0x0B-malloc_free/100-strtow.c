@@ -64,7 +64,7 @@ char **strtow(char *str)
 				i++;
 				j++;
 			}
-			ptr[num_strings][j + 1] = '\0';
+			ptr[num_strings][j++] = '\0';
 			j = 0;
 			num_strings++;
 		}
