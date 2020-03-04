@@ -31,12 +31,24 @@ char **strtow(char *str)
 	}
 
 	ptr = (char **)malloc(1 + sizeof(char *) * num_strings);
+	if (ptr == NULL)
+	{
+		free(ptr);
+		return (NULL);
+	}
 
 	i = 0;
 
 	for (i = 0; i < num_strings; i++)
 	{
 		ptr[i] = (char *)malloc(1 + sizeof(char));
+		if (ptr[i] == NULL)
+		{
+			for (; i >= 0; i--)
+				free(ptr[i]);
+			free(ptr);
+			return (NULL);
+		}
 	}
 
 	i = 0;
