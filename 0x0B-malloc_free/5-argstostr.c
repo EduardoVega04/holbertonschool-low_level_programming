@@ -7,31 +7,33 @@
  */
 char *argstostr(int ac, char **av)
 {
-	int i;
-	int j;
-	int comparador = 0;
-	int posicion;
+	int i, j, k, size, comparador, posicion;
 	char *new;
 
 	if (ac == 0 || av == NULL)
 		return (NULL);
 
-	for (i = 0; av[i] != '\0'; i++)
-		;
+	for (i = 0; i < ac; i++)
+	{
+		for (j = 0; av[i][j] != '\0'; j++)
+		{
+			size++;
+		}
+	}
 
-	new = (char *)malloc(1 + sizeof(char) * 8000);
+	new = (char *)malloc(sizeof(char) * (1 + size + ac));
+
 	if (new == NULL)
 		return (NULL);
 
-	while (comparador < ac)
+	for (; comparador < ac; comparador++)
 	{
-		for (j = 0; av[comparador][j] != '\0'; j++)
+		for (k = 0; av[comparador][k] != '\0'; k++)
 		{
-			new[j + posicion] = av[comparador][j];
+			new[k + posicion] = av[comparador][k];
 		}
-		posicion = posicion + j;
+		posicion = posicion + k;
 		new[posicion++] = '\n';
-		comparador++;
 	}
 	return (new);
 }
