@@ -20,6 +20,8 @@ char *argstostr(int ac, char **av)
 		;
 
 	new = (char *)malloc(1 + sizeof(char) * 8000);
+	if (new == NULL)
+		return (NULL);
 
 	while (comparador < ac)
 	{
