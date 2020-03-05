@@ -1,5 +1,19 @@
 #include "holberton.h"
 /**
+ * get_string - Get the length of a string
+ * @s: The string to test
+ *
+ * Return: The length of a string
+ */
+int get_string(char *s)
+{
+	unsigned int i;
+
+	for (i = 0; s[i] != '\0'; i++)
+		;
+	return (i);
+}
+/**
  * string_nconcat - Concatenate two strings with conditions
  * @s1: String number 1
  * @s2: String number 2
@@ -10,7 +24,7 @@
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	char *ptr;
-	unsigned int i, j, k, l;
+	unsigned int j, k, s1_length, s2_length;
 
 	if (s1 == NULL)
 		s1 = "";
@@ -18,23 +32,31 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	if (s2 == NULL)
 		s2 = "";
 
-	for (i = 0; s1[i] != '\0'; i++)
-		;
+	s1_length = get_string(s1);
+	s2_length = get_string(s2);
 
-	for (j = 0; s2[j] != '\0' && j < n; j++)
-		;
+	ptr = malloc((s1_length + s2_length) + 1);
+	if (ptr == NULL)
+		return (NULL);
 
-	ptr = malloc((i + j) + 1);
-
-	for (k = 0; s1[k] != '\0'; k++)
+	for (j = 0; s1[j] != '\0'; j++)
 	{
-		ptr[k] = s1[k];
+		ptr[j] = s1[j];
 	}
 
-	for (l = 0; s2[l] != '\0' && l < n; l++)
+	if (n > s2_length)
 	{
-		ptr[k + l] = s2[l];
+		for (k = 0; s2[k] != '\0'; k++)
+		{
+			ptr[j + k] = s2[k];
+		}
 	}
-
+	else
+	{
+		for (k = 0; s2[k] != '\0' && k < n; k++)
+		{
+			ptr[j + k] = s2[k];
+		}
+	}
 	return (ptr);
 }
