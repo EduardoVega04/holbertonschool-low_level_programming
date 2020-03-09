@@ -1,8 +1,8 @@
-#include <stdlib.h>
-#include <stdio.h>
-
 #ifndef DOG_H_
 #define DOG_H_
+
+#include <stdlib.h>
+#include <stdio.h>
 
 /**
  * struct dog - Structure called dog
@@ -17,6 +17,8 @@ struct dog
 	float age;
 	char *owner;
 };
+
 void init_dog(struct dog *d, char *name, float age, char *owner);
 void print_dog(struct dog *d);
+
 #endif
