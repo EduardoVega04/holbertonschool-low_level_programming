@@ -1,4 +1,24 @@
-#include "dog.h"
+ #include "dog.h"
+/**
+ * *_strcpy - copy string
+ * @dest: char to test
+ * @src: char to test
+ *
+ * Return: char
+ */
+char *_strcpy(char *dest, char *src)
+{
+int i;
+
+for (i = 0; src[i] != '\0'; i++)
+{
+dest[i] = src[i];
+}
+
+dest[i] = '\0';
+return (dest);
+}
+
 /**
  * new_dog - Creates a new structure dog
  * @name: Name of the dog
@@ -14,9 +34,21 @@ dog_t *new_dog(char *name, float age, char *owner)
 	if (ptr == NULL)
 		return (NULL);
 
-	(*ptr).name = name;
-	(*ptr).age = age;
-	(*ptr).owner = owner;
+	(*ptr).name = malloc(sizeof(name + 1));
+	if (name == NULL)
+	{
+		free(ptr);
+		return (NULL);
+	}
 
+	(*ptr).age = age;
+
+	(*ptr).owner = malloc(sizeof(owner + 1));
+	if (owner == NULL)
+	{
+		free(ptr);
+		return (NULL);
+	}
+	_strcpy((*(ptr).name, name));
 	return (ptr);
 }
