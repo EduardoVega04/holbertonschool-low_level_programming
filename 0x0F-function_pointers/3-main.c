@@ -7,28 +7,27 @@
  * @argv: Arguments
  * Return: Returns 0 if all its ok
  **/
-int main(int argc, char **argv)
+int main(int argc, char *argv[])
 {
-	int number_a, number_b, res;
 
 	if (argc != 4)
 	{
 		printf("Error\n");
 		exit(98);
 	}
-
-	number_a = atoi(argv[1]);
-	number_b = atoi(argv[3]);
-
-
-	if (get_op_func(argv[2]) ==  NULL)
+	if (argv[2][1] != '\0')
 	{
 		printf("Error\n");
 		exit(99);
 	}
-
-	res = get_op_func(argv[2])(number_a, number_b);
-	printf("%d\n", res);
-
+	if (get_op_func(argv[2]) == NULL)
+	{
+		printf("Error\n");
+		exit(99);
+	}
+	else
+	{
+		printf("%i\n", get_op_func(argv[2])(atoi(argv[1]), atoi(argv[3])));
+	}
 	return (0);
 }
