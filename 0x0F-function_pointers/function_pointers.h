@@ -13,4 +13,16 @@ void print_elem(int elem);
 void print_elem_hex(int elem);
 int int_index(int *array, int size, int (*cmp)(int));
 
+/**
+ * struct op - Struct op
+ *
+ * @op: The operator
+ * @f: The function associated
+ */
+typedef struct op
+{
+	char *op;
+	int (*f)(int a, int b);
+} op_t;
+
 #endif
