@@ -1,10 +1,18 @@
-global    main
-	          extern    puts
+global _start
 
-	          section   .text
-main:				; This is called by the C library startup code
-	          mov       rdi, message ; First integer (or pointer) argument in rdi
-	          call      puts	 ; puts(message)
-	          ret			 ; Return from main back into C library wrapper
-message:
-	          db        "Hello, Holberton", 0 ; Note strings must be terminated with 0 in C
+	section .text
+
+_start:
+	  mov rax, 1        	; write(
+	  mov rdi, 1        	;   STDOUT_FILENO,
+	  mov rsi, msg      	;   "Hello, Holberton\n",
+	  mov rdx, msglen   	;   sizeof("Hello, Holberton\n")
+	  syscall           	; );
+
+	  mov rax, 60       	; exit(
+	  mov rdi, 0        	;   EXIT_SUCCESS
+	  syscall           	; );
+
+	section .rodata
+msg:	 db "Hello, Holberton!", 10
+msglen:	 equ $ - msg
