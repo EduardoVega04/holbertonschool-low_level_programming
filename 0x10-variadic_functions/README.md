@@ -1,0 +1,1 @@
+<strong>Variadic functions<strong>
