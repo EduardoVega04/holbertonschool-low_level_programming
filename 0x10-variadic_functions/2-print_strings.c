@@ -8,11 +8,11 @@
 void print_strings(const char *separator, const unsigned int n, ...)
 {
 	unsigned int i;
+	char *string;
 
 	va_list mylist;
 
 	va_start(mylist, n);
-	char *string;
 
 	for (i = 0; i < n; i++)
 	{
