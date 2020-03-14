@@ -1,5 +1,5 @@
 	.file	"100-hello_holberton.c"
-	.section	.rodata
+	.section	.rodata.str1.1,"aMS",@progbits,1
 .LC0:
 	.string	"Hello, Holberton\n"
 	.text
@@ -8,18 +8,15 @@
 main:
 .LFB0:
 	.cfi_startproc
-	pushq	%rbp
+	subq	$8, %rsp
 	.cfi_def_cfa_offset 16
-	.cfi_offset 6, -16
-	movq	%rsp, %rbp
-	.cfi_def_cfa_register 6
 	movl	$18, %edx
 	movl	$.LC0, %esi
 	movl	$1, %edi
 	movl	$0, %eax
 	call	write
-	popq	%rbp
-	.cfi_def_cfa 7, 8
+	addq	$8, %rsp
+	.cfi_def_cfa_offset 8
 	ret
 	.cfi_endproc
 .LFE0:
