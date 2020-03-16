@@ -22,18 +22,21 @@ void print_all(const char * const format, ...)
 		switch (format[i])
 		{
 		case 'c':
-			printf("%c", (char) va_arg(mylist, int));
+			printf("%c", va_arg(mylist, int));
 			break;
 		case 'i':
 			printf("%d", va_arg(mylist, int));
 			break;
 		case 'f':
-			printf("%f", (float) va_arg(mylist, double));
+			printf("%f", va_arg(mylist, double));
 			break;
 		case 's':
-			ptr = va_arg(mylist, char *);
+			ptr = va_arg(mylist, char*);
 			if (ptr == NULL)
+			{
 				printf("(nil)");
+				break;
+			}
 			printf("%s", ptr);
 			break;
 		}
