@@ -7,7 +7,12 @@
  */
 size_t list_len(const list_t *h)
 {
-	size_t contador = 2;
+	size_t contador = 0;
 
+	while (h != NULL)
+	{
+		contador++;
+		h = (*h).next;
+	}
 	return (contador);
 }
