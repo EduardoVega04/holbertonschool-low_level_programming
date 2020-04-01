@@ -23,11 +23,19 @@ int create_file(const char *filename, char *text_content)
 		return (-1);
 	}
 
+	if (text_content == NULL)
+	{
+		close(crear);
+		return (1);
+	}
+
 	llenar = write(crear, text_content, strlen(text_content));
 
 	if (llenar < 0)
 	{
 		return (-1);
 	}
-	return (crear);
+
+	close(crear);
+	return (1);
 }
