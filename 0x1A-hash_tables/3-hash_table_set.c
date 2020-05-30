@@ -61,7 +61,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		}
 	}
 
-	ht->array[index] = add_node_beginning(&(ht->array[index]), dup_key, dup_value);
+	ht->array[index] = add_node_beginning(&ht->array[index], dup_key, dup_value);
 	if (ht->array[index] == NULL)
 		return (0);
 
