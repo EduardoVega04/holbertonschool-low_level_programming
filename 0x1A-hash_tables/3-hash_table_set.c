@@ -10,15 +10,13 @@ hash_node_t *add_node_beginning(hash_node_t **head, const char *key,
 		const char *value)
 {
 	hash_node_t *new_node = NULL;
-	char *cpy_key = strdup(key);
-	char *cpy_value = strdup(value);
 
 	new_node = malloc(sizeof(hash_node_t));
 	if (new_node == NULL)
 		return (NULL);
 
-	new_node->key = cpy_key;
-	new_node->value = cpy_value;
+	new_node->key = (char *)key;
+	new_node->value = (char *)value;
 	new_node->next = NULL;
 
 	if (*head == NULL)
@@ -33,7 +31,7 @@ hash_node_t *add_node_beginning(hash_node_t **head, const char *key,
 	return (new_node);
 }
 /**
- * hash_table_set - Stores a key with its value in the hash table
+ * hash_table_set - Adds an element in the hash table
  * @ht: Pointer to the hash table
  * @key: key to add
  * @value: value of the key
@@ -43,6 +41,9 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int index = -1;
 
+	if (!ht || !key || !value)
+		return (0);
+
 	index = key_index((unsigned char *)key, ht->size);
 
 	ht->array[index] = add_node_beginning(&(ht->array[index]), key, value);
@@ -51,3 +52,4 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 
 	return (1);
 }
+
