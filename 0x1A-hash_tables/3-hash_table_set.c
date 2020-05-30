@@ -1,11 +1,12 @@
 #include "hash_tables.h"
 /**
- * create_node - Adds a node at the beginning of a linked list
+ * add_node - Adds a node at the beginning of a linked list
+ * @head: Head of the linked list (pointer in the hash table index)
  * @key: Key to add
  * @value: Value of the key
  * Return: The address of the new node
  */
-hash_node_t *create_node(const char *key, const char *value)
+hash_node_t *add_node(hash_node_t **head, const char *key, const char *value)
 {
 	hash_node_t *new_node = NULL;
 	char *dup_key = strdup(key);
@@ -30,7 +31,9 @@ hash_node_t *create_node(const char *key, const char *value)
 
 	new_node->key = dup_key;
 	new_node->value = dup_value;
-	new_node->next = NULL;
+
+	new_node->next = *head;
+	*head = new_node;
 
 	return (new_node);
 }
@@ -66,12 +69,8 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		}
 	}
 
-	tmp = create_node(key, value);
-	if (tmp == NULL)
+	if (add_node(&(ht->array[index]), key, value) == NULL)
 		return (0);
-
-	tmp->next = ht->array[index];
-	ht->array[index] = tmp;
 
 	return (1);
 }
