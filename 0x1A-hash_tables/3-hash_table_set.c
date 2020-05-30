@@ -40,13 +40,14 @@ hash_node_t *add_node_beginning(hash_node_t **head, const char *key,
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int index = -1;
+	const char *cpy_value = strdup(value);
 
-	if (!ht || !key || !value ||ht->array ||ht->size)
+	if (!ht || !key || strlen(key) == 0 || !value)
 		return (0);
 
 	index = key_index((unsigned char *)key, ht->size);
 
-	ht->array[index] = add_node_beginning(&(ht->array[index]), key, value);
+	ht->array[index] = add_node_beginning(&(ht->array[index]), key, cpy_value);
 	if (ht->array[index] == NULL)
 		return (0);
 
