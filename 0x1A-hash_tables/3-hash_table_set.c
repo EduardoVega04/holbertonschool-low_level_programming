@@ -6,22 +6,16 @@
  * @value: Value of the key
  * Return: The address of the new node
  */
-hash_node_t *add_node_beginning(hash_node_t **head, const char *key,
-		const char *value)
+hash_node_t *add_node_beginning(hash_node_t **head, char *key, char *value)
 {
 	hash_node_t *new_node = NULL;
-	char *dup_key = NULL;
-	char *dup_value = NULL;
-
-	dup_key = strdup(key);
-	dup_value =strdup(value);
 
 	new_node = malloc(sizeof(hash_node_t));
-	if (new_node == NULL || !dup_key || !dup_value)
+	if (new_node == NULL)
 		return (NULL);
 
-	new_node->key = dup_key;
-	new_node->value = dup_value;
+	new_node->key = key;
+	new_node->value = value;
 	new_node->next = NULL;
 
 	if (*head == NULL)
@@ -45,12 +39,14 @@ hash_node_t *add_node_beginning(hash_node_t **head, const char *key,
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int index = -1;
-	char *dup_value;
+	char *dup_value = NULL;
+	char *dup_key = NULL;
 	hash_node_t *tmp = NULL;
 
 	dup_value = strdup(value);
+	dup_key = strdup(key);
 
-	if (!ht || !key || strlen(key) == 0 || !value || !dup_value)
+	if (!ht || !key || strlen(key) == 0 || !value || !dup_value || !dup_key)
 		return (0);
 
 	index = key_index((unsigned char *)key, ht->size);
@@ -65,7 +61,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		}
 	}
 
-	ht->array[index] = add_node_beginning(&(ht->array[index]), key, value);
+	ht->array[index] = add_node_beginning(&(ht->array[index]), dup_key, dup_value);
 	if (ht->array[index] == NULL)
 		return (0);
 
