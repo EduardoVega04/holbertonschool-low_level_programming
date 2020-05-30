@@ -10,13 +10,18 @@ hash_node_t *add_node_beginning(hash_node_t **head, const char *key,
 		const char *value)
 {
 	hash_node_t *new_node = NULL;
+	char *dup_key = NULL;
+	char *dup_value = NULL;
+
+	dup_key = strdup(key);
+	dup_value =strdup(value);
 
 	new_node = malloc(sizeof(hash_node_t));
-	if (new_node == NULL)
+	if (new_node == NULL || !dup_key || !dup_value)
 		return (NULL);
 
-	new_node->key = (char *)key;
-	new_node->value = (char *)value;
+	new_node->key = dup_key;
+	new_node->value = dup_value;
 	new_node->next = NULL;
 
 	if (*head == NULL)
@@ -45,8 +50,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 
 	dup_value = strdup(value);
 
-	if (!ht || !key || strlen(key) == 0 || !value || !dup_value
-			|| !ht->array || ht->size)
+	if (!ht || !key || strlen(key) == 0 || !value || !dup_value)
 		return (0);
 
 	index = key_index((unsigned char *)key, ht->size);
