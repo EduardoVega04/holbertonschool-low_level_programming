@@ -38,7 +38,7 @@ hash_node_t *add_node_beginning(hash_node_t **head, char *key, char *value)
  */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	unsigned long int index = -1;
+	unsigned long int index;
 	char *dup_value = NULL;
 	char *dup_key = NULL;
 	hash_node_t *tmp = NULL;
