@@ -41,7 +41,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int index = -1;
 
-	if (!ht || !key || !value)
+	if (!ht || !key || !value ||ht->array ||ht->size)
 		return (0);
 
 	index = key_index((unsigned char *)key, ht->size);
