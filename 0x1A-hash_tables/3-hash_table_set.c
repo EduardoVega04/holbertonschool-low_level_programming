@@ -45,7 +45,8 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 
 	dup_value = strdup(value);
 
-	if (!ht || !key || strlen(key) == 0 || !value || !dup_value)
+	if (!ht || !key || strlen(key) == 0 || !value || !dup_value
+			|| !ht->array || ht->size)
 		return (0);
 
 	index = key_index((unsigned char *)key, ht->size);
@@ -60,7 +61,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		}
 	}
 
-	ht->array[index] = add_node_beginning(&(ht->array[index]), key, dup_value);
+	ht->array[index] = add_node_beginning(&(ht->array[index]), key, value);
 	if (ht->array[index] == NULL)
 		return (0);
 
