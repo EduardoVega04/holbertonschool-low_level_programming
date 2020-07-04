@@ -3,7 +3,5 @@
 #target: dependencies
 #   action
 
-all:
-        gcc main.c holberton.c -o holberton
-
-    
+all: holberton
+	gcc main.c holberton.c -o holberton
