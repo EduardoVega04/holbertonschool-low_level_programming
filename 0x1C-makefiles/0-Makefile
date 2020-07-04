@@ -4,6 +4,6 @@
 #   action
 
 all:
-    gcc main.c holberton.c -o holberton
+        gcc main.c holberton.c -o holberton
 
     
