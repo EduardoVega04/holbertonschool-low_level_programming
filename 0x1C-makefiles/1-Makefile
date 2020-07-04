@@ -3,9 +3,9 @@
 #target: dependencies
 #   action
 
+CC= gcc
+
+SRC= main.c holberton.c
+
 all:
-	gcc main.c holberton.c -o holberton
-
-CC: gcc
-
-SRC: holberton.c main.c
+	$(CC) $(SRC) -o holberton
