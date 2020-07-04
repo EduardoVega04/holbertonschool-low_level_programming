@@ -13,13 +13,13 @@ all: $(OBJ)
 	$(CC) $(OBJ) -o $(NAME)
 
 clean:
-	$(RM) *.~ $(NAME)
+	$(RM) *~ $(NAME)
 
 oclean:
 	$(RM) $(OBJ)
 
 fclean:
-	$(RM) *.~ $(NAME) $(OBJ)
+	$(RM) *~ $(NAME) $(OBJ)
 
 re:
 	oclean all
