@@ -14,7 +14,7 @@ if (array == NULL)
 {
 return (-1);
 }
- 
+
 for (pos = 0; pos < size; pos++)
 {
 printf("Value checked array[%ld] = [%d]\n", pos, array[pos]);
@@ -23,7 +23,7 @@ if (array[pos] == value)
 {
 return (pos);
 }
- 
+
 }
 
 return (-1);
