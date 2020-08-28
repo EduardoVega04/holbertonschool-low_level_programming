@@ -8,19 +8,21 @@
  */
 void my_edwardPrint(int *array, int start, int end)
 {
-  int i;
+int i;
 
-  printf("Searching in array: ");
-  
-  for (i = start; i <= end; i++)
-  {
-    printf("%d", array[i]);
-    
-    if (i < end)
-      printf(", ");
-  }
-  
-  printf("\n");  
+printf("Searching in array: ");
+
+for (i = start; i <= end; i++)
+{
+printf("%d", array[i]);
+
+if (i < end)
+{
+printf(", ");
+}
+
+}
+printf("\n");
 }
 
 /**
@@ -32,28 +34,37 @@ void my_edwardPrint(int *array, int start, int end)
  */
 int binary_search(int *array, size_t size, int value)
 {
-  size_t start = 0;
-  size_t end = size - 1;
-  size_t middle;
+size_t start = 0;
+size_t end = size - 1;
+size_t middle;
 
-  if (array == NULL)
-    return (-1);
+if (array == NULL)
+{
+return (-1);
+}
 
-  while (start <= end)
-  {
-    my_edwardPrint(array, start, end);
-		   
-    middle = (start + end) / 2;
+while (start <= end)
+{
+my_edwardPrint(array, start, end);
 
-    if (array[middle] == value)
-      return (middle);
+middle = (start + end) / 2;
 
-    else if (value < array[middle])
-      end = middle - 1;
+if (array[middle] == value)
+{
+return (middle);
+}
 
-    else
-      start = middle + 1;    
-  }
-  
-  return (-1);
+else if (value < array[middle])
+{
+end = middle - 1;
+}
+
+else
+{
+start = middle + 1;
+}
+
+}
+
+return (-1);
 }
