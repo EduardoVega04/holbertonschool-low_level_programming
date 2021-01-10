@@ -28,7 +28,6 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int index = 0;
 	hash_node_t *entry = NULL;
-	hash_node_t *add_new = NULL;
 
 	if (!ht || !key)
 		return (0);
@@ -54,9 +53,9 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		entry = entry->next;
 	}
 
-	add_new = new_entry(key, value);
-	add_new->next = ht->array[index];
-	ht->array[index] = add_new;
+	entry = ht->array[index];
+	ht->array[index] = new_entry(key, value);
+	ht->array[index]->next = entry;
 
 	return (1);
 }
