@@ -10,11 +10,8 @@ hash_node_t *new_entry(const char *key, const char *value)
 	hash_node_t *new_node = NULL;
 
 	new_node = malloc(sizeof(hash_node_t));
-	new_node->key = malloc(strlen(key) + 1);
-	new_node->value = malloc(strlen(value) + 1);
-
-	strcpy(new_node->key, key);
-	strcpy(new_node->value, value);
+	new_node->key = strdup(key);
+	new_node->value = strdup(value);
 	new_node->next = NULL;
 
 	return (new_node);
@@ -50,8 +47,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		if (strcmp(entry->key, key) == 0)
 		{
 			free(entry->value);
-			entry->value = malloc(strlen(value) + 1);
-			strcpy(entry->value, value);
+			entry->value = strdup(value);
 			return (1);
 		}
 
