@@ -5,7 +5,7 @@
  * @value: Value of the key
  * Return: The address of the new node
  */
-hash_node_t *new_entry(const char *key, const char *value)
+void new_entry(hash_node_t **h, const char *key, const char *value)
 {
 	hash_node_t *new_node = NULL;
 
@@ -14,7 +14,10 @@ hash_node_t *new_entry(const char *key, const char *value)
 	new_node->value = strdup(value);
 	new_node->next = NULL;
 
-	return (new_node);
+	if(*h != NULL)
+		new_node->next = *h;
+
+	*h = new_node;	
 }
 
 /**
@@ -37,7 +40,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 
 	if (entry == NULL)
 	{
-		entry = new_entry(key, value);
+		new_entry(&entry, key, value);
 		return (1);
 	}
 
@@ -53,9 +56,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		entry = entry->next;
 	}
 
-	entry = ht->array[index];
-	ht->array[index] = new_entry(key, value);
-	ht->array[index]->next = entry;
+	new_entry(&ht->array[index], key, value);
 
 	return (1);
 }
