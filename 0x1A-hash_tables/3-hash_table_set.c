@@ -1,7 +1,6 @@
 #include "hash_tables.h"
 /**
  * new_entry - Creates a new entry and returns it
- * @h: Head of the linked list
  * @key: Key to add
  * @value: Value of the key
  * Return: The address of the new node
@@ -15,7 +14,7 @@ hash_node_t *new_entry(const char *key, const char *value)
 	new_node->value = strdup(value);
 	new_node->next = NULL;
 
-	return new_node;
+	return (new_node);
 }
 
 /**
@@ -55,7 +54,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 
 		entry = entry->next;
 	}
-	
+
 	entry = ht->array[index];
 	ht->array[index] = new_entry(key, value);
 	ht->array[index]->next = entry;
