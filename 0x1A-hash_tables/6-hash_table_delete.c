@@ -11,7 +11,7 @@ void hash_table_delete(hash_table_t *ht)
 
 	if (!ht)
 		return;
-	
+
 	for (; i < ht->size; i++)
 	{
 		eraser = ht->array[i];
@@ -23,7 +23,7 @@ void hash_table_delete(hash_table_t *ht)
 			free(prev->key);
 			free(prev->value);
 			free(prev);
-		}		
+		}
 	}
 
 	free(ht->array);
